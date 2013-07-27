@@ -14,9 +14,12 @@ class PaymentInline(admin.TabularInline):
 class MemberAdmin(admin.ModelAdmin):
     actions_on_top = True
 
-    list_display = ('full_name', 'email', 'phone', 'joined_at')
+    list_display = ('full_name', 'email', 'phone',
+                    'joined_at', 'internal_account_number',)
+
     list_display_links = list_display
     search_fields = ["full_name", "email", "phone"]
+    date_hierarchy = 'joined_at'
 
     inlines = [PaymentInline]
 
@@ -43,11 +46,13 @@ class MemberAdmin(admin.ModelAdmin):
         }),
     )
 
+
 class MemberPaymentAdmin(admin.ModelAdmin):
     actions_on_top = True
 
     list_display = ("member", "payment_date", "quantity")
     list_display_links = list_display
+    date_hierarchy = 'payment_date'
 
 
 admin.site.register(models.Member, MemberAdmin)
