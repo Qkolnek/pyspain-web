@@ -88,13 +88,10 @@ class User(PermissionsMixin, AbstractBaseUser):
         :return: the full name.
         :rtype: string.
         """
-        try:
-            full_name = self.client.name or ''
-        except ObjectDoesNotExist:
-            first_name = self.first_name or ''
-            last_name = self.last_name or ''
-            full_name = u'{0} {1}'.format(first_name, last_name)
-        return full_name.strip() or self.email
+        if self.first_name:
+            return "{0} {1}".format(self.first_name.strip(),
+                                    self.last_name.strip())
+        return self.email
 
     def get_short_name(self):
         """

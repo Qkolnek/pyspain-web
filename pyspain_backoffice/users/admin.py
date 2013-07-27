@@ -83,6 +83,7 @@ class UserChangeForm(forms.ModelForm):
         return self.initial["password"]
 
 
+
 class UserAdmin(DjangoUserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
