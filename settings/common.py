@@ -33,6 +33,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'pyspain_backoffice.users',
     'pyspain_backoffice.members',
+    'pyspain_backoffice.accounting',
 
     'south',
     #'reversion',
