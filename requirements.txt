@@ -1,3 +1,4 @@
-git+https://github.com/django/django.git@stable/1.6.x
-hg+https://bitbucket.org/andrewgodwin/south
+#git+https://github.com/django/django.git@stable/1.6.x
+git+https://github.com/kaleidos/django-supertools.git
 psycopg2==2.5.1
+django-jinja=0.21

@@ -18,7 +18,7 @@ class MemberAdmin(admin.ModelAdmin):
                     'joined_at', 'internal_account_number',)
 
     list_display_links = list_display
-    search_fields = ["full_name", "email", "phone"]
+    search_fields = ["full_name", "email", "phone", "identity_number"]
     date_hierarchy = 'joined_at'
 
     inlines = [PaymentInline]
@@ -52,7 +52,9 @@ class MemberPaymentAdmin(admin.ModelAdmin):
 
     list_display = ("member", "payment_date", "quantity")
     list_display_links = list_display
+    search_fields = ["member__full_name", "member__email", "member__identity_number"]
     date_hierarchy = 'payment_date'
+    list_filter = ["member",]
 
 
 admin.site.register(models.Member, MemberAdmin)

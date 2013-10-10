@@ -31,12 +31,19 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pyspain_backoffice.users',
+    'pyspain.users',
+    'pyspain_web',
     'pyspain_backoffice.members',
     'pyspain_backoffice.accounting',
 
     'south',
+    'django_jinja',
     #'reversion',
+)
+
+TEMPLATE_LOADERS = (
+    'django_jinja.loaders.AppLoader',
+    'django_jinja.loaders.FileSystemLoader',
 )
 
 MIDDLEWARE_CLASSES = (
