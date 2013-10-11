@@ -48,8 +48,6 @@ class MemberAdmin(admin.ModelAdmin):
 
 
 class MemberPaymentAdmin(admin.ModelAdmin):
-    actions_on_top = True
-
     list_display = ("member", "payment_date", "quantity")
     list_display_links = list_display
     search_fields = ["member__full_name", "member__email", "member__identity_number"]
@@ -57,5 +55,13 @@ class MemberPaymentAdmin(admin.ModelAdmin):
     list_filter = ["member",]
 
 
+class MemberAttachmentAdmin(admin.ModelAdmin):
+    list_display = ("id", "type", "member", "created_at", "file")
+    list_display_links = list_display
+    search_fields = ["member__full_name", "member__email", "member__identity_number"]
+    list_filter = ("type", "created_at",)
+
+
 admin.site.register(models.Member, MemberAdmin)
 admin.site.register(models.MemberPayment, MemberPaymentAdmin)
+admin.site.register(models.Attachment, MemberAttachmentAdmin)

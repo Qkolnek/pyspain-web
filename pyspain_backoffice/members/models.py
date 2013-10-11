@@ -14,14 +14,9 @@ class Member(models.Model):
                         verbose_name=_("Numero de identidad (DNI/NIE)"),
                         max_length=50)
 
-    created_at = models.DateTimeField(
-                    verbose_name=_("Creado en"),
-                    default=timezone.now)
-
     joined_at = models.DateField(
                     verbose_name=_("Se ha unido en"),
                     default=lambda: timezone.now().date())
-
 
     phone = models.CharField(max_length=200,
                              verbose_name=_("Telefono/s"))
@@ -52,6 +47,9 @@ class Member(models.Model):
     internal_account_number = models.CharField(max_length=100, blank=True, default="",
                                                verbose_name=_("Numero de cuenta interno"))
 
+    created_at = models.DateTimeField(editable=False, auto_now_add=True)
+    modified_at = models.DateTimeField(editable=False, auto_now=True)
+
     def __str__(self):
         return self.full_name
 
@@ -65,14 +63,23 @@ class MemberPayment(models.Model):
     Register of memebers payment.
     """
 
+    TYPE_WIRE_TRANSFER = 0
+    TYPE_CASH_PAYMENT = 1
+
+    TYPE_CHOICES = ((TYPE_WIRE_TRANSFER, _("Transferencia bancaria")),
+                    (TYPE_CASH_PAYMENT, _("Pago al contado")),)
+
     member = models.ForeignKey("Member", related_name="payment_registers",
                                verbose_name=_("Miembro"))
-
     payment_date = models.DateField(_("Fecha de pago"),
                                     default=lambda: timezone.now().date())
     quantity = models.DecimalField(max_digits=5, decimal_places=1,
                                    verbose_name=_("Cantidad abonada"))
-    created_at = models.DateTimeField(editable=False, default=timezone.now)
+    payment_type = models.IntegerField(choices=TYPE_CHOICES)
+    notes = models.TextField(blank=True)
+
+    created_at = models.DateTimeField(editable=False, auto_now_add=True)
+    modified_at = models.DateTimeField(editable=False, auto_now=True)
 
     class Meta:
         verbose_name = _("Registo de pagos")
@@ -80,3 +87,27 @@ class MemberPayment(models.Model):
 
     def __str__(self):
         return ugettext("Registo de pago {0}").format(self.id)
+
+
+class Attachment(models.Model):
+    """
+    Member attachement class. Serves for store documentatation associated
+    with a member, such as identity document, payments, etc....
+    """
+
+    TYPE_IDCARD = 0
+    TYPE_PAYMENT = 1
+    TYPE_OTHER = 1000
+
+    TYPE_CHOICES = ((TYPE_IDCARD, _("Documento de identidad")),
+                    (TYPE_PAYMENT, _("Justificante de pago")),
+                    (TYPE_OTHER, _("Otros")),)
+
+    member = models.ForeignKey("Member", related_name="attachments")
+    file = models.FileField(upload_to="member/attachments/")
+    type = models.IntegerField(choices=TYPE_CHOICES)
+
+    notes = models.TextField(blank=True)
+
+    created_at = models.DateTimeField(editable=False, auto_now_add=True)
+    modified_at = models.DateTimeField(editable=False, auto_now=True)
