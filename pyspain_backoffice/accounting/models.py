@@ -77,8 +77,7 @@ class Register(models.Model):
     transaction = models.ForeignKey("Transaction", related_name="registers")
 
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
-    date = models.DateTimeField(verbose_name=_("Fecha"),
-                                auto_now_add=True)
+    date = models.DateField(verbose_name=_("Fecha"), default=timezone.now)
 
     subject = models.CharField(max_length=200)
     debit = models.DecimalField(max_digits=16, decimal_places=4)

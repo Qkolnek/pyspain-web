@@ -32,7 +32,7 @@ class MemberAdmin(admin.ModelAdmin):
             )
         }),
         ("Fechas", {
-            'fields': (('created_at', 'joined_at'),),
+            'fields': ('joined_at',),
         }),
         ("Social", {
             'fields': ('twitter_username',
