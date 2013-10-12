@@ -25,7 +25,7 @@ class RegisterAdmin(admin.ModelAdmin):
 
 class RegisterInline(admin.TabularInline):
     model = models.Register
-    extra = 3
+    extra = 0
     max_num = 100
 
 
