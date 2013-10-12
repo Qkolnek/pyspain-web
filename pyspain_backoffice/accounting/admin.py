@@ -4,28 +4,49 @@ from django.contrib import admin
 from . import models
 
 
-class AccountingEntryRegisterInline(admin.TabularInline):
-    model = models.AccountingEntryRegister
-    extra = 0
-    readonly_fields = ('id',)
-    fields = ('id', 'account', 'invoice')
-
-
 class InvoiceAdmin(admin.ModelAdmin):
-    actions_on_top = True
-
-
-class AccountingEntryRegisterAdmin(admin.ModelAdmin):
-    actions_on_top = True
-
-
-class AccountingEntryAdmin(admin.ModelAdmin):
-    actions_on_top = True
-    inlines = [AccountingEntryRegisterInline]
     readonly_fields = ('id',)
-    fields = ('id', 'date',)
+    list_display = ("identifier", "attachment", "date",)
+    list_display_links = list_display
+    list_filter = ("date",)
+    date_hierarchy = "date"
+
+
+class AccountAdmin(admin.ModelAdmin):
+    list_display = ("identifier", "name", "created_at",)
+    list_display_links = list_display
+
+
+class RegisterAdmin(admin.ModelAdmin):
+    readonly_fields = ('id',)
+    list_display = ("account", "date", "subject", "debit", "credit",)
+    list_display_links = list_display
+    list_filter = ("date",)
+    date_hierarchy = "date"
+
+
+class RegisterInline(admin.TabularInline):
+    readonly_fields = ('id',)
+    model = models.Register
+    extra = 3
+    max_num = 100
+
+
+class TransactionAdmin(admin.ModelAdmin):
+    list_display = ("uuid", "fiscal_year", "created_at",)
+    list_display_links = list_display
+    list_filter = ("fiscal_year__name",)
+
+    inlines = [RegisterInline]
+
+
+class FiscalYearAdmin(admin.ModelAdmin):
+    list_display = ("name", "created_at",)
+    list_display_links = list_display
 
 
 admin.site.register(models.Invoice, InvoiceAdmin)
-admin.site.register(models.AccountingEntry, AccountingEntryAdmin)
-admin.site.register(models.AccountingEntryRegister, AccountingEntryRegisterAdmin)
+admin.site.register(models.Account, AccountAdmin)
+admin.site.register(models.Transaction, TransactionAdmin)
+admin.site.register(models.Register, RegisterAdmin)
+admin.site.register(models.FiscalYear, FiscalYearAdmin)
