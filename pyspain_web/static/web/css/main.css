@@ -1,0 +1,143 @@
+@font-face {
+    font-family: 'roboto_condensedlight';
+    src: url('../fonts/RobotoCondensed-Light-webfont.eot');
+    src: url('../fonts/RobotoCondensed-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/RobotoCondensed-Light-webfont.woff') format('woff'),
+         url('../fonts/RobotoCondensed-Light-webfont.ttf') format('truetype'),
+         url('../fonts/RobotoCondensed-Light-webfont.svg#roboto_condensedlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotoregular';
+    src: url('../fonts/Roboto-Regular-webfont.eot');
+    src: url('../fonts/Roboto-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Roboto-Regular-webfont.woff') format('woff'),
+         url('../fonts/Roboto-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/Roboto-Regular-webfont.svg#robotoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotolight';
+    src: url('../fonts/Roboto-Light-webfont.eot');
+    src: url('../fonts/Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Roboto-Light-webfont.woff') format('woff'),
+         url('../fonts/Roboto-Light-webfont.ttf') format('truetype'),
+         url('../fonts/Roboto-Light-webfont.svg#robotolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+    font-family: "robotolight", sans-serif;
+    font-size: 16px;
+}
+
+a {
+    color: #333;
+    font-family: "roboto_condensedlight";
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:visited {
+}
+
+a:active {
+}
+
+.page-header-zone {
+    background-color: #eee;
+}
+
+.page-container {
+    width: 940px;
+    padding: 20px;
+    margin: auto;
+}
+
+.header-container .header {
+    font-family: "roboto_condensedlight";
+    overflow: hidden;
+}
+
+.header-container .top-menu {
+    float: right;
+}
+
+.header-container .top-menu ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    text-align: right;
+}
+
+.header-container .top-menu ul li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.header-container .header .header-image {
+    float: left;
+}
+
+.header-container .header .header-title {
+    font-size: 32px;
+    margin-left: 100px;
+    line-height: 60px;
+    color: #333;
+}
+
+.header-container .header .header-title h1 {
+    font-family: "roboto_condensedlight";
+}
+
+
+section h1 {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    font-size: 32px;
+}
+
+section h2 {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    font-size: 24px;
+}
+
+section p {
+    padding-bottom: 5px;
+    line-height: 25px;
+}
+
+/* Home Page */
+
+.last-news h1 {
+    color: #AAA;
+}
+
+.last-news article {
+    padding-bottom: 20px;
+    padding-top: 10px;
+    border-bottom: 1px dotted #ccc;
+}
+
+.last-news article header {
+    padding-bottom: 15px;
+}
+
+.last-news article header h2 {
+    text-decoration: underline;
+    color: #666;
+}
+
+.last-news article header p {
+    font-size: 12px;
+}
