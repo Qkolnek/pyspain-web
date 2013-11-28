@@ -5,43 +5,41 @@
     <section class="last-news">
         <h1>Ultimas noticias:</h2>
 
+        {% for article in articles.object_list %}
         <article>
             <header>
-                <h2>The last notice title!</h2>
-                <p>Posted on <time datetime="2009-09-04T16:31:24+02:00">September 4th 2009</time> by <a href="#">Writer</a> - <a href="#comments">6 comments</a></p>
+                <h2><a href="{{ url("article", slug=article.slug) }}">{{ article.title }}</a></h2>
+                <p>Creado <time datetime="{{ article.created_at.isoformat() }}">{{ article.created_at|date("D d M Y") }}</time>
+                    por <a href="#">{{ article.created_by.get_full_name() }}</a></p>
             </header>
 
-            <p>Freegan 90's ethical, kitsch bitters tofu qui cupidatat. Sed aliquip dolor fanny pack. Culpa eiusmod minim, occaecat adipisicing ex reprehenderit quis leggings Shoreditch McSweeney's consequat pickled. Labore fanny pack cardigan, letterpress lomo paleo farm-to-table Terry Richardson commodo mixtape literally Schlitz. Pitchfork readymade craft beer, pork belly tousled tote bag bicycle rights Godard Helvetica single-origin coffee.</p>
-            <p>Leggings in culpa pork belly, sed Godard semiotics single-origin coffee keffiyeh selvage est you probably haven't heard of them viral messenger bag vinyl. Sint aute blog banh mi, occaecat polaroid cornhole American Apparel XOXO.</p>
+            {{ view.markup(article.content)|safe() }}
         </article>
-
-
+        {% else %}
         <article>
-            <header>
-                <h2>The last notice title!</h2>
-                <p>Posted on <time datetime="2009-09-04T16:31:24+02:00">September 4th 2009</time> by <a href="#">Writer</a> - <a href="#comments">6 comments</a></p>
-            </header>
-
-            <p>Freegan 90's ethical, kitsch bitters tofu qui cupidatat. Sed aliquip dolor fanny pack. Culpa eiusmod minim, occaecat adipisicing ex reprehenderit quis leggings Shoreditch McSweeney's consequat pickled. Labore fanny pack cardigan, letterpress lomo paleo farm-to-table Terry Richardson commodo mixtape literally Schlitz. Pitchfork readymade craft beer, pork belly tousled tote bag bicycle rights Godard Helvetica single-origin coffee.</p>
-            <p>Leggings in culpa pork belly, sed Godard semiotics single-origin coffee keffiyeh selvage est you probably haven't heard of them viral messenger bag vinyl. Sint aute blog banh mi, occaecat polaroid cornhole American Apparel XOXO.</p>
+            <p>No hay articulos para mostrar.</p>
         </article>
+        {% endfor %}
 
+
+        {% if articles.paginator.num_pages > 1 %}
         <div class="pagination">
-            {# <span class="step-links"> #}
-            {#     {% if contacts.has_previous() %} #}
-            {#         <a href="?page={{ contacts.previous_page_number }}">previous</a> #}
-            {#     {% endif %} #}
+            <span class="step-links">
+                {% if articles.has_previous() %}
+                    <a href="?page={{ articles.previous_page_number }}">mas nuevos</a>
+                {% endif %}
 
-            {#     <span class="current"> #}
-            {#         Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}. #}
-            {#     </span> #}
+                <span class="current">
+                     pagina {{ articles.number }} de {{ articles.paginator.num_pages }}
+                </span>
 
-            {#     {% if contacts.has_next() %} #}
-            {#         <a href="?page={{ contacts.next_page_number }}">next</a> #}
-            {#     {% endif %} #}
-            {# </span> #}
-
+                {% if articles.has_next() %}
+                    <a href="?page={{ articles.next_page_number }}">mas viejos</a>
+                {% endif %}
+            </span>
         </div>
+
+        {% endif %}
     </section>
 
 </div>
