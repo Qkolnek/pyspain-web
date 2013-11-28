@@ -33,6 +33,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'pyspain.users',
     'pyspain_web',
+    'pyspain_web.content',
     'pyspain_backoffice.members',
     'pyspain_backoffice.accounting',
 
