@@ -58,11 +58,12 @@ class Article(MarkupMixin, GenericTemplateView):
         return ctx
 
 
-# class Faq(MarkupMixin, GenericTemplateView):
-#     def get_context_data(self):
-#         ctx = super().get_context_data()
-#
-#         faq_entry_cls = get_model("content", "FaqEntry")
-#
-#         ctx["entries"] =
-#         return ctx
+class Faq(MarkupMixin, GenericTemplateView):
+    def get_tmpl_name(self):
+        return "web/faq-list.jinja"
+
+    def get_context_data(self):
+        ctx = super().get_context_data()
+        faq_entry_cls = get_model("content", "FaqEntry")
+        ctx["entries"] = faq_entry_cls.objects.all().order_by("question")
+        return ctx

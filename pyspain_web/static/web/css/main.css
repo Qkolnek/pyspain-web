@@ -185,3 +185,9 @@ section .pagination .step-links .current {
     font-size: 12px;
     padding-bottom: 5px;
 }
+
+/* Faq */
+
+.faq-list article {
+    margin-bottom: 25px;
+}

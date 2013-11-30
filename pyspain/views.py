@@ -49,7 +49,10 @@ class GenericView(View):
 class GenericTemplateView(GenericView):
     tmpl_name = None
 
-    def get(self, request, *args, **kwargs):
+    def get_tmpl_name(self):
         if self.tmpl_name is None:
             raise ValueError("tmpl_name attr must be a valid template name")
-        return self.render(self.tmpl_name)
+        return self.tmpl_name
+
+    def get(self, request, *args, **kwargs):
+        return self.render(self.get_tmpl_name())

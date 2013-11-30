@@ -1,8 +1,8 @@
 <div class="top-menu">
     <ul class="menu">
-        <li><a href="/">Inicio</a></li>
-        <li><a href="/faq">Faq</a></li>
-        <li><a href="/doc">Doc</a></li>
+        <li><a href="{{ url('home') }}">Inicio</a></li>
+        <li><a href="{{ url('faq-list') }}">Faq</a></li>
+        <li><a href="">Doc</a></li>
     </ul>
 </div>
 
@@ -11,7 +11,7 @@
         <img src="{{ static('web/images/logo.png') }}" width="30" />
     </div>
     <div class="header-title">
-        <a href="/">
+        <a href="{{ url('home') }}">
             <h1>Asociación Python-España</h1>
         </a>
     </div>
