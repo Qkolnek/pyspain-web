@@ -58,9 +58,20 @@ class Article(MarkupMixin, GenericTemplateView):
         return ctx
 
 
+class Page(MarkupMixin, GenericTemplateView):
+    tmpl_name = "web/page.jinja"
+
+    def get_context_data(self):
+        ctx = super().get_context_data()
+
+        page_cls = get_model("content", "Page")
+        ctx["page"] = get_object_or_404(page_cls, slug=self.kwargs["slug"])
+
+        return ctx
+
+
 class Faq(MarkupMixin, GenericTemplateView):
-    def get_tmpl_name(self):
-        return "web/faq-list.jinja"
+    tmpl_name = "web/faq-list.jinja"
 
     def get_context_data(self):
         ctx = super().get_context_data()
