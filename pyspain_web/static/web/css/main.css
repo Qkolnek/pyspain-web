@@ -65,13 +65,17 @@ a:active {
 }
 
 .page-header-zone {
-    background-color: #eee;
+    background-color: #333;
 }
 
 .page-container {
     width: 940px;
     padding: 20px;
     margin: auto;
+}
+
+.header-container a {
+    color: #aaa;
 }
 
 .header-container .header {
@@ -81,6 +85,7 @@ a:active {
 
 .header-container .top-menu {
     float: right;
+    line-height: 30px;
 }
 
 .header-container .top-menu ul {
@@ -100,10 +105,9 @@ a:active {
 }
 
 .header-container .header .header-title {
-    font-size: 32px;
-    margin-left: 100px;
-    line-height: 60px;
-    color: #333;
+    font-size: 22px;
+    margin-left: 48px;
+    line-height: 30px;
 }
 .header-container .header .header-title a:hover {
     text-decoration: none;
