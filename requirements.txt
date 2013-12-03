@@ -1,4 +1,3 @@
-#git+https://github.com/django/django.git@stable/1.6.x
-git+https://github.com/kaleidos/django-supertools.git
+django==1.6.0
 psycopg2==2.5.1
-django-jinja=0.21
+django-jinja=0.22
