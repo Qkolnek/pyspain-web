@@ -191,3 +191,18 @@ section .pagination .step-links .current {
 .faq-list article {
     margin-bottom: 25px;
 }
+
+/* Community Events */
+
+.community-events article {
+    padding-left: 20px;
+}
+
+.community-events article header h2 {
+    padding-bottom: 0px;
+}
+
+.community-events article header p {
+    font-size: 12px;
+    color: #777;
+}

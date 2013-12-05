@@ -21,7 +21,7 @@ class Event(models.Model):
 
     description = models.TextField(blank=True)
 
-    community = models.ForeignKey("Community", null=True)
+    community = models.ForeignKey("Community", null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
     modified_at = models.DateTimeField(auto_now=True, blank=True)

@@ -10,5 +10,6 @@ urlpatterns = patterns('',
     url(r"^article/(?P<slug>[\w\d\-]+)$", views.Article.as_view(), name="article"),
     url(r"^faq$", views.Faq.as_view(), name="faq-list"),
     url(r"^page/(?P<slug>[\w\d\-]+)$", views.Page.as_view(), name="page"),
+    url(r"^community/events$", views.CommunityEvents.as_view(), name="community-events"),
     url(r"^rss/latest$", rss.ArticlesFeed(), name="rss-latest-news"),
 )
