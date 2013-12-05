@@ -2,21 +2,15 @@
 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import get_model
-from django.utils.text import Truncator
 from django.shortcuts import get_object_or_404
 
-from markdown import markdown
-
 from pyspain.views import GenericView, GenericTemplateView
+from pyspain_web import utils
 
 
 class MarkupMixin(object):
-    def markup(self, text, truncate=True):
-        if truncate:
-            t = Truncator(text)
-            text = t.chars(1000)
-
-        return markdown(text, safe_mode=False)
+    def markup(self, text, truncate=None):
+        return utils.markup(text, truncate)
 
 
 class Home(MarkupMixin, GenericTemplateView):

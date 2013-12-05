@@ -3,10 +3,12 @@
 from django.conf.urls import patterns, include, url
 
 from . import views
+from . import rss
 
 urlpatterns = patterns('',
     url(r"^$", views.Home.as_view(), name="home"),
     url(r"^article/(?P<slug>[\w\d\-]+)$", views.Article.as_view(), name="article"),
     url(r"^faq$", views.Faq.as_view(), name="faq-list"),
     url(r"^page/(?P<slug>[\w\d\-]+)$", views.Page.as_view(), name="page"),
+    url(r"^rss/latest$", rss.ArticlesFeed(), name="rss-latest-news"),
 )

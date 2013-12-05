@@ -10,7 +10,7 @@
                     por <a href="#">{{ article.created_by.get_full_name() }}</a></p>
             </header>
 
-            {{ view.markup(article.content, truncate=False)|safe() }}
+            {{ view.markup(article.content)|safe() }}
         </article>
     </section>
 </div>
