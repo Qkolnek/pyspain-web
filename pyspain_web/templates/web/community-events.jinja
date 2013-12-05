@@ -1,0 +1,23 @@
+{% extends "web/base.jinja" %}
+
+{% block body %}
+<div class="community-events-page">
+    <section class="community-events">
+        <h1>Calendario de eventos Python en España</h2>
+
+        {% for entry in page.object_list %}
+        <article>
+            <header>
+                <h2><a href="{{ entry.link }}">{{ entry.name }}</a></h2>
+            </header>
+        </article>
+        {% else %}
+        <article>
+            <p>No hay eventos</p>
+        </article>
+        {% endfor %}
+
+        {% include "web/include-paginator.jinja" %}
+    </section>
+</div>
+{% endblock %}

@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'pyspain.users',
     'pyspain_web',
     'pyspain_web.content',
+    'pyspain_web.community',
     'pyspain_backoffice.members',
     'pyspain_backoffice.accounting',
 

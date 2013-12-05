@@ -5,7 +5,7 @@
     <section class="last-news">
         <h1>Ultimas noticias:</h2>
 
-        {% for article in articles.object_list %}
+        {% for article in page.object_list %}
         <article>
             <header>
                 <h2><a href="{{ url("article", slug=article.slug) }}">{{ article.title }}</a></h2>
@@ -21,25 +21,7 @@
         </article>
         {% endfor %}
 
-
-        {% if articles.paginator.num_pages > 1 %}
-        <div class="pagination">
-            <span class="step-links">
-                {% if articles.has_previous() %}
-                    <a href="?page={{ articles.previous_page_number }}">mas nuevos</a>
-                {% endif %}
-
-                <span class="current">
-                     pagina {{ articles.number }} de {{ articles.paginator.num_pages }}
-                </span>
-
-                {% if articles.has_next() %}
-                    <a href="?page={{ articles.next_page_number }}">mas viejos</a>
-                {% endif %}
-            </span>
-        </div>
-
-        {% endif %}
+        {% include "web/include-paginator.jinja" %}
     </section>
 
 </div>
