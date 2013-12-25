@@ -35,8 +35,8 @@ INSTALLED_APPS = (
     'pyspain_web',
     'pyspain_web.content',
     'pyspain_web.community',
-    'pyspain_backoffice.members',
-    'pyspain_backoffice.accounting',
+    # 'pyspain_backoffice.members',
+    # 'pyspain_backoffice.accounting',
 
     'south',
     'django_jinja',
