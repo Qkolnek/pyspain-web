@@ -139,6 +139,35 @@ section p {
     line-height: 25px;
 }
 
+section strong {
+    font-family: 'robotobold';
+}
+
+section article ul,
+section article ol {
+    padding-left: 20px;
+    line-height: 25px;
+}
+
+section article pre {
+    padding: 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #eee;
+    margin-bottom: 15px;
+}
+
+section article pre code {
+    font-family: monospace;
+}
+
+section article ol {
+    list-style: decimal;
+}
+
+section article ul {
+    list-style: disc;
+}
+
 section .pagination .step-links {
     font-size: 12px;
 }
