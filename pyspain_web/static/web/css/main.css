@@ -144,6 +144,10 @@ section p {
     line-height: 25px;
 }
 
+section span {
+    line-height: 25px;
+}
+
 section strong {
     font-family: 'robotobold';
 }
@@ -229,7 +233,14 @@ section .pagination .step-links .current {
 /* Community Events */
 
 .community-events article {
+    padding-top: 10px;
     padding-left: 20px;
+    border-bottom: 1px dotted #ddd;
+}
+
+.community-events article:last-child {
+    padding-left: 20px;
+    border-bottom: 0px
 }
 
 .community-events article header h2 {
