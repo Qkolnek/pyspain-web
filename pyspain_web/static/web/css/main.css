@@ -134,6 +134,11 @@ section a {
     font-family: "robotolight", sans-serif;
 }
 
+section article p a {
+    text-decoration: underline;
+    color: #000;
+}
+
 section p {
     padding-bottom: 15px;
     line-height: 25px;
