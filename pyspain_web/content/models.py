@@ -36,3 +36,20 @@ class FaqEntry(models.Model):
 
     created_by = models.ForeignKey("users.User", null=True, blank=True, related_name="+",
                                    default=None, verbose_name=_("Creado por"))
+
+
+
+class Attachment(models.Model):
+    description = models.CharField(blank=True, max_length=1024)
+    file = models.FileField(upload_to="uploads/", max_length=1024)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    modified_at = models.DateTimeField(auto_now=True, auto_now_add=True)
+
+
+    created_by = models.ForeignKey("users.User", null=True, blank=True, related_name="+",
+                                   default=None, verbose_name=_("Creado por"))
+
+    class Meta:
+        ordering = ["description"]
+
